@@ -1,0 +1,71 @@
+Test Case 1: Simple Allocation
+Water Supply: 1000
+Demands: R1: 400, R2: 300, R3: 500
+Pipeline Losses: R1: 5%, R2: 3%, R3: 7%
+Expected Output: R1: 380, R2: 290, R3: 330
+
+Test Case 2: Limited Supply
+Water Supply: 800
+Demands: R1: 300, R2: 200, R3: 250, R4: 200
+Pipeline Losses: R1: 10%, R2: 5%, R3: 8%, R4: 12%
+Expected Output: R1: 270, R2: 190, R3: 220, R4: 120
+
+Test Case 3: High Loss Rates
+Water Supply: 500
+Demands: R1: 300, R2: 200
+Pipeline Losses: R1: 20%, R2: 15%
+Expected Output: R1: 240, R2: 170
+
+Test Case 4: Equal Demands and Losses
+Water Supply: 1200
+Demands: R1: 400, R2: 400, R3: 400
+Pipeline Losses: R1: 10%, R2: 10%, R3: 10%
+Expected Output: R1: 360, R2: 360, R3: 360
+
+Test Case 5: Zero Loss
+Water Supply: 500
+Demands: R1: 250, R2: 250
+Pipeline Losses: R1: 0%, R2: 0%
+Expected Output: R1: 250, R2: 250
+
+Test Case 6: Excess Supply
+Water Supply: 1500
+Demands: R1: 300, R2: 300, R3: 300, R4: 300
+Pipeline Losses: R1: 5%, R2: 5%, R3: 5%, R4: 5%
+Expected Output: R1: 285, R2: 285, R3: 285, R4: 285
+
+Test Case 7: Unequal Demands with High Supply
+Water Supply: 2000
+Demands: R1: 800, R2: 600, R3: 400
+Pipeline Losses: R1: 10%, R2: 15%, R3: 5%
+Expected Output: R1: 720, R2: 510, R3: 380
+
+Test Case 8: All Regions with Same Losses
+Water Supply: 1000
+Demands: R1: 200, R2: 200, R3: 300, R4: 300
+Pipeline Losses: R1: 10%, R2: 10%, R3: 10%, R4: 10%
+Expected Output: R1: 180, R2: 180, R3: 270, R4: 270
+
+Test Case 9: Unequal Losses and Demands
+Water Supply: 2000
+Demands: R1: 500, R2: 400, R3: 300, R4: 200, R5: 100
+Pipeline Losses: R1: 5%, R2: 10%, R3: 15%, R4: 20%, R5: 25%
+Expected Output: R1: 475, R2: 360, R3: 255, R4: 160, R5: 75
+
+Test Case 10: Zero Demand
+Water Supply: 500
+Demands: R1: 0, R2: 200, R3: 300
+Pipeline Losses: R1: 5%, R2: 10%, R3: 20%
+Expected Output: R1: 0, R2: 180, R3: 240
+
+Test Case 11: Extreme Shortage
+Water Supply: 200
+Demands: R1: 500, R2: 300
+Pipeline Losses: R1: 10%, R2: 20%
+Expected Output: R1: 90, R2: 90
+
+Test Case 12: Balanced Scenario
+Water Supply: 1000
+Demands: R1: 400, R2: 300, R3: 300
+Pipeline Losses: R1: 5%, R2: 5%, R3: 5%
+Expected Output: R1: 380, R2: 285, R3: 285
