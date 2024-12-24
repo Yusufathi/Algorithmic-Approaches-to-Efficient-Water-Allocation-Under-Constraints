@@ -5,7 +5,8 @@ from techniques.dynamic_allocation import DynamicProgrammingAllocation
 from techniques.brute_force_allocation import BruteForceAllocation
 from techniques.genetic_allocation import GeneticAlgorithmAllocation
 
-# Register all techniques in a list
+
+# Modify this for the technique you want to be tested. for example, if you want to use only the greedy allocation technique, comment the other approaches.
 techniques = [
     GreedyAllocation(),
     DynamicProgrammingAllocation(),
@@ -40,30 +41,30 @@ def read_test_cases(file_path):
         elif line.startswith("Water Supply"):
             current_test_case["water_supply"] = int(line.split(":")[1].strip())
         elif line.startswith("Demands"):
-            demands = line.split(":")[1].strip()
-            current_test_case["demands"] = {k: int(v) for k, v in (x.split(":") for x in demands.split(","))}
+            try:
+                demands = line.split(":")[1].strip()
+                current_test_case["demands"] = {k.strip(): int(v.strip()) for k, v in (x.split(":") for x in demands.split(",") if ":" in x)}
+            except ValueError:
+                raise ValueError(f"Invalid format in 'Demands' line: {line}")
         elif line.startswith("Pipeline Losses"):
-            losses = line.split(":")[1].strip()
-            current_test_case["pipeline_losses"] = {k: float(v.strip('%')) / 100 for k, v in (x.split(":") for x in losses.split(","))}
+            try:
+                losses = line.split(":")[1].strip()
+                current_test_case["pipeline_losses"] = {k.strip(): float(v.strip('%').strip()) / 100 for k, v in (x.split(":") for x in losses.split(",") if ":" in x)}
+            except ValueError:
+                raise ValueError(f"Invalid format in 'Pipeline Losses' line: {line}")
         elif line.startswith("Expected Output"):
-            expected_output = line.split(":")[1].strip()
-            current_test_case["expected_output"] = {k: int(v) for k, v in (x.split(":") for x in expected_output.split(","))}
+            try:
+                expected_output = line.split(":")[1].strip()
+                current_test_case["expected_output"] = {k.strip(): int(v.strip()) for k, v in (x.split(":") for x in expected_output.split(",") if ":" in x)}
+            except ValueError:
+                raise ValueError(f"Invalid format in 'Expected Output' line: {line}")
     if current_test_case:
         test_cases.append(current_test_case)
     
     return test_cases
 
+
 def test_techniques(test_cases, techniques):
-    """
-    Tests all registered techniques with the provided test cases.
-
-    Args:
-        test_cases (list): A list of test case dictionaries.
-        techniques (list): A list of initialized allocation techniques.
-
-    Returns:
-        list: A list of results for each technique compared to the expected output.
-    """
     results = []
     for test_case in test_cases:
         case_results = {
@@ -85,14 +86,11 @@ def test_techniques(test_cases, techniques):
     return results
 
 def main():
-    # Read test cases
-    test_cases_file = "test_cases.txt"
+    test_cases_file = "./test_cases.txt"
     test_cases = read_test_cases(test_cases_file)
     
-    # Test techniques
     results = test_techniques(test_cases, techniques)
 
-    # Output results
     for result in results:
         print(f"Test Case: {result['test_case']}")
         for technique_result in result["results"]:
