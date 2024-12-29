@@ -1,0 +1,236 @@
+[
+    {
+        "name": "Test Case 1: Simple Allocation",
+        "water_supply": 1000,
+        "demands": {
+            "R1": 400,
+            "R2": 300,
+            "R3": 500
+        },
+        "pipeline_losses": {
+            "R1": 0.05,
+            "R2": 0.03,
+            "R3": 0.07
+        },
+        "expected_output": {
+            "R1": 380,
+            "R2": 290,
+            "R3": 330
+        }
+    },
+    {
+        "name": "Test Case 2: Limited Supply",
+        "water_supply": 800,
+        "demands": {
+            "R1": 300,
+            "R2": 200,
+            "R3": 250,
+            "R4": 200
+        },
+        "pipeline_losses": {
+            "R1": 0.10,
+            "R2": 0.05,
+            "R3": 0.08,
+            "R4": 0.12
+        },
+        "expected_output": {
+            "R1": 270,
+            "R2": 190,
+            "R3": 220,
+            "R4": 120
+        }
+    },
+    {
+        "name": "Test Case 3: High Loss Rates",
+        "water_supply": 500,
+        "demands": {
+            "R1": 300,
+            "R2": 200
+        },
+        "pipeline_losses": {
+            "R1": 0.20,
+            "R2": 0.15
+        },
+        "expected_output": {
+            "R1": 240,
+            "R2": 170
+        }
+    },
+    {
+        "name": "Test Case 4: Equal Demands and Losses",
+        "water_supply": 1200,
+        "demands": {
+            "R1": 400,
+            "R2": 400,
+            "R3": 400
+        },
+        "pipeline_losses": {
+            "R1": 0.10,
+            "R2": 0.10,
+            "R3": 0.10
+        },
+        "expected_output": {
+            "R1": 360,
+            "R2": 360,
+            "R3": 360
+        }
+    },
+    {
+        "name": "Test Case 5: Zero Loss",
+        "water_supply": 500,
+        "demands": {
+            "R1": 250,
+            "R2": 250
+        },
+        "pipeline_losses": {
+            "R1": 0.00,
+            "R2": 0.00
+        },
+        "expected_output": {
+            "R1": 250,
+            "R2": 250
+        }
+    },
+    {
+        "name": "Test Case 6: Excess Supply",
+        "water_supply": 1500,
+        "demands": {
+            "R1": 300,
+            "R2": 300,
+            "R3": 300,
+            "R4": 300
+        },
+        "pipeline_losses": {
+            "R1": 0.05,
+            "R2": 0.05,
+            "R3": 0.05,
+            "R4": 0.05
+        },
+        "expected_output": {
+            "R1": 285,
+            "R2": 285,
+            "R3": 285,
+            "R4": 285
+        }
+    },
+    {
+        "name": "Test Case 7: Unequal Demands with High Supply",
+        "water_supply": 2000,
+        "demands": {
+            "R1": 800,
+            "R2": 600,
+            "R3": 400
+        },
+        "pipeline_losses": {
+            "R1": 0.10,
+            "R2": 0.15,
+            "R3": 0.05
+        },
+        "expected_output": {
+            "R1": 720,
+            "R2": 510,
+            "R3": 380
+        }
+    },
+    {
+        "name": "Test Case 8: All Regions with Same Losses",
+        "water_supply": 1000,
+        "demands": {
+            "R1": 200,
+            "R2": 200,
+            "R3": 300,
+            "R4": 300
+        },
+        "pipeline_losses": {
+            "R1": 0.10,
+            "R2": 0.10,
+            "R3": 0.10,
+            "R4": 0.10
+        },
+        "expected_output": {
+            "R1": 180,
+            "R2": 180,
+            "R3": 270,
+            "R4": 270
+        }
+    },
+    {
+        "name": "Test Case 9: Unequal Losses and Demands",
+        "water_supply": 2000,
+        "demands": {
+            "R1": 500,
+            "R2": 400,
+            "R3": 300,
+            "R4": 200,
+            "R5": 100
+        },
+        "pipeline_losses": {
+            "R1": 0.05,
+            "R2": 0.10,
+            "R3": 0.15,
+            "R4": 0.20,
+            "R5": 0.25
+        },
+        "expected_output": {
+            "R1": 475,
+            "R2": 360,
+            "R3": 255,
+            "R4": 160,
+            "R5": 75
+        }
+    },
+    {
+        "name": "Test Case 10: Zero Demand",
+        "water_supply": 500,
+        "demands": {
+            "R1": 0,
+            "R2": 200,
+            "R3": 300
+        },
+        "pipeline_losses": {
+            "R1": 0.05,
+            "R2": 0.10,
+            "R3": 0.20
+        },
+        "expected_output": {
+            "R1": 0,
+            "R2": 180,
+            "R3": 240
+        }
+    },
+    {
+        "name": "Test Case 11: Extreme Shortage",
+        "water_supply": 200,
+        "demands": {
+            "R1": 500,
+            "R2": 300
+        },
+        "pipeline_losses": {
+            "R1": 0.10,
+            "R2": 0.20
+        },
+        "expected_output": {
+            "R1": 90,
+            "R2": 90
+        }
+    },
+    {
+        "name": "Test Case 12: Balanced Scenario",
+        "water_supply": 1000,
+        "demands": {
+            "R1": 400,
+            "R2": 300,
+            "R3": 300
+        },
+        "pipeline_losses": {
+            "R1": 0.05,
+            "R2": 0.05,
+            "R3": 0.05
+        },
+        "expected_output": {
+            "R1": 380,
+            "R2": 285,
+            "R3": 285
+        }
+    }
+]

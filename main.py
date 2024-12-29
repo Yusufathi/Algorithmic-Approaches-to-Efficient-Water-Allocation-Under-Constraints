@@ -1,6 +1,6 @@
 import os
 import json
-from techniques.greedy_allocation import GreedyAllocation
+from techniques.greedy_allocation import FordFulkersonAllocation
 from techniques.dynamic_allocation import DynamicProgrammingAllocation
 from techniques.brute_force_allocation import BruteForceAllocation
 from techniques.genetic_allocation import GeneticAlgorithmAllocation
@@ -8,15 +8,15 @@ from techniques.genetic_allocation import GeneticAlgorithmAllocation
 
 # Modify this for the technique you want to be tested. for example, if you want to use only the greedy allocation technique, comment the other approaches.
 techniques = [
-    GreedyAllocation(),
-    DynamicProgrammingAllocation(),
-    BruteForceAllocation(),
-    GeneticAlgorithmAllocation()
+    FordFulkersonAllocation()
+    # DynamicProgrammingAllocation(),
+    # BruteForceAllocation(),
+    # GeneticAlgorithmAllocation()
 ]
 
 def read_test_cases(file_path):
     """
-    Reads test cases from a text file.
+    Reads test cases from a JSON file.
 
     Args:
         file_path (str): Path to the test cases file.
@@ -27,40 +27,11 @@ def read_test_cases(file_path):
     if not os.path.exists(file_path):
         raise FileNotFoundError(f"Test cases file not found: {file_path}")
     
-    test_cases = []
     with open(file_path, 'r') as file:
-        lines = file.readlines()
+        test_cases = json.load(file)
     
-    current_test_case = {}
-    for line in lines:
-        line = line.strip()
-        if line.startswith("Test Case"):
-            if current_test_case:
-                test_cases.append(current_test_case)
-            current_test_case = {"name": line}
-        elif line.startswith("Water Supply"):
-            current_test_case["water_supply"] = int(line.split(":")[1].strip())
-        elif line.startswith("Demands"):
-            try:
-                demands = line.split(":")[1].strip()
-                current_test_case["demands"] = {k.strip(): int(v.strip()) for k, v in (x.split(":") for x in demands.split(",") if ":" in x)}
-            except ValueError:
-                raise ValueError(f"Invalid format in 'Demands' line: {line}")
-        elif line.startswith("Pipeline Losses"):
-            try:
-                losses = line.split(":")[1].strip()
-                current_test_case["pipeline_losses"] = {k.strip(): float(v.strip('%').strip()) / 100 for k, v in (x.split(":") for x in losses.split(",") if ":" in x)}
-            except ValueError:
-                raise ValueError(f"Invalid format in 'Pipeline Losses' line: {line}")
-        elif line.startswith("Expected Output"):
-            try:
-                expected_output = line.split(":")[1].strip()
-                current_test_case["expected_output"] = {k.strip(): int(v.strip()) for k, v in (x.split(":") for x in expected_output.split(",") if ":" in x)}
-            except ValueError:
-                raise ValueError(f"Invalid format in 'Expected Output' line: {line}")
-    if current_test_case:
-        test_cases.append(current_test_case)
-    
+    # Debugging: Print parsed test cases
+    # print("Parsed Test Cases:", test_cases)
     return test_cases
 
 
@@ -86,7 +57,7 @@ def test_techniques(test_cases, techniques):
     return results
 
 def main():
-    test_cases_file = "./test_cases.txt"
+    test_cases_file = "./test_cases.json"  # Use JSON file
     test_cases = read_test_cases(test_cases_file)
     
     results = test_techniques(test_cases, techniques)
@@ -95,9 +66,11 @@ def main():
         print(f"Test Case: {result['test_case']}")
         for technique_result in result["results"]:
             print(f"  Technique: {technique_result['technique']}")
+            print(f"  Expected Output: {test_cases[results.index(result)]['expected_output']}")
             print(f"  Output: {technique_result['output']}")
-            print(f"  Match Expected: {technique_result['match_expected']}")
+            # print(f"  Match Expected: {technique_result['match_expected']}")
         print("-" * 50)
 
 if __name__ == "__main__":
     main()
+
