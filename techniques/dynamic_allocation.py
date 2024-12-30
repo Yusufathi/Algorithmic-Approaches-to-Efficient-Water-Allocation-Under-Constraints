@@ -25,4 +25,26 @@ class DynamicProgrammingAllocation(AllocationTechnique):
                     "R3": 330
                 }
         """
-        pass
+        
+        adjusted_demands = {}
+        for demand, loss in zip(demands, pipeline_losses):
+            adjusted_demands[demand] = demands[demand] + (demands[demand] * pipeline_losses[loss])
+        print("Adjusted Demands: ",adjusted_demands)
+
+        total_adjusted_demand = 0
+        for demand in adjusted_demands:
+            total_adjusted_demand += adjusted_demands[demand]
+        print("Total Adjusted Demand: ", total_adjusted_demand)
+
+        allocations = {}
+        for adj_demand in adjusted_demands:
+            allocations[adj_demand] = water_supply * (adjusted_demands[adj_demand] / total_adjusted_demand)
+        print("Allocations: ", allocations)
+
+        loss_ratio = {}
+        for i in (allocations):
+            loss_ratio[i] = (allocations[i] / demands[i])
+        print("Loss Ratio: ", loss_ratio)
+
+        return allocations
+        # pass
