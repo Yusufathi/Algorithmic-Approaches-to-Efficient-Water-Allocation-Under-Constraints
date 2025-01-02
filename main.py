@@ -65,14 +65,30 @@ def main():
     for result in results:
         print(f"Test Case: {result['test_case']}")
         for technique_result in result["results"]:
+            test_case = test_cases[results.index(result)]
+            output = technique_result["output"]
+            demand = test_case["demands"]
+
             print(f"  Technique: {technique_result['technique']}")
-            print(f"  Water Supply: {test_cases[results.index(result)]['water_supply']}")
-            print(f"  Demands: {test_cases[results.index(result)]['demands']}")
-            print(f"  Pipeline Losses: {test_cases[results.index(result)]['pipeline_losses']}")
-            print(f"  Expected Output: {test_cases[results.index(result)]['expected_output']}")
-            print(f"  Output: {technique_result['output']}")
+            print(f"  Water Supply: {test_case['water_supply']}")
+            print(f"  Demands: {demand}")
+            print(f"  Pipeline Losses: {test_case['pipeline_losses']}")
+            print(f"  Expected Output: {test_case['expected_output']}")
+            print(f"  Output: {output}")
             # print(f"  Match Expected: {technique_result['match_expected']}")
-        print("-" * 50)
+
+            loss_ratios = {}
+            for region, demand_value in demand.items():
+                output_value = output.get(region, 0)
+                if demand_value > 0:
+                    loss_ratios[region] = (output_value / demand_value)
+                else:
+                    loss_ratios[region] = None  
+
+            print(f"  Loss Ratio: {loss_ratios}")
+            # print(f"  Match Expected: {technique_result['match_expected']}")
+            print("-" * 50)
+
 
 if __name__ == "__main__":
     main()
