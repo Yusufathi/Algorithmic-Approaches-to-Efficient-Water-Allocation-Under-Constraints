@@ -66,6 +66,8 @@ def main():
         print(f"Test Case: {result['test_case']}")
         for technique_result in result["results"]:
             print(f"  Technique: {technique_result['technique']}")
+            print(f"  Water Supply: {test_cases[results.index(result)]['water_supply']}")
+            print(f"  Demands: {test_cases[results.index(result)]['demands']}")
             print(f"  Expected Output: {test_cases[results.index(result)]['expected_output']}")
             print(f"  Output: {technique_result['output']}")
             # print(f"  Match Expected: {technique_result['match_expected']}")
