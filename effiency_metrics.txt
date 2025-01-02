@@ -1,0 +1,12 @@
+# Utilization Efficiency: Maximize the total allocated water relative to the available supply.
+# Utilization_Efficiency = Total_Allocated_Water / Total_Water_Supply
+
+# Loss Efficiency: Minimize the water lost in pipelines during distribution.
+# Loss_Efficiency = 1 - (Total_Water_Losses / Total_Water_Supply)
+# Total_Water_Losses = sum(Allocated_Water_i * Pipeline_Loss_i for i in Regions)
+
+# Fairness Index: Ensure equitable allocation of water among regions relative to their demands.
+# Fairness_Index = (1 / n) * sum(Allocated_Water_i / Demand_i for i in Regions)
+
+# Weighted Multi-Objective Optimization
+# Overall_Efficiency = (w1 * Utilization_Efficiency) + (w2 * Loss_Efficiency) + (w3 * Fairness_Index) 

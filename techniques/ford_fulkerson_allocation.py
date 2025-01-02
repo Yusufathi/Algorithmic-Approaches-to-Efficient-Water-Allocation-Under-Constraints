@@ -5,7 +5,6 @@ from collections import defaultdict, deque
 #TODO: Add the condition where the loss is 1.
 #TODO: Add the condition  where the demand is 0.
 #TODO: Add the condition where the water supply is 0.
-
 class FordFulkersonAllocation(AllocationTechnique):
     """
     Greedy approach for water allocation Using Ford-Fulkerson Algorithm
