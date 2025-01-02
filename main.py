@@ -8,8 +8,8 @@ from techniques.genetic_allocation import GeneticAlgorithmAllocation
 
 # Modify this for the technique you want to be tested. for example, if you want to use only the greedy allocation technique, comment the other approaches.
 techniques = [
-    # FordFulkersonAllocation()
-    DynamicProgrammingAllocation(),
+    FordFulkersonAllocation()
+    # DynamicProgrammingAllocation(),
     # BruteForceAllocation(),
     # GeneticAlgorithmAllocation()
 ]
@@ -68,6 +68,7 @@ def main():
             print(f"  Technique: {technique_result['technique']}")
             print(f"  Water Supply: {test_cases[results.index(result)]['water_supply']}")
             print(f"  Demands: {test_cases[results.index(result)]['demands']}")
+            print(f"  Pipeline Losses: {test_cases[results.index(result)]['pipeline_losses']}")
             print(f"  Expected Output: {test_cases[results.index(result)]['expected_output']}")
             print(f"  Output: {technique_result['output']}")
             # print(f"  Match Expected: {technique_result['match_expected']}")
