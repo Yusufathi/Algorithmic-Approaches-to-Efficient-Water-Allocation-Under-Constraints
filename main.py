@@ -1,6 +1,6 @@
 import os
 import json
-from techniques.greedy_allocation import FordFulkersonAllocation
+from techniques.ford_fulkerson_allocation import FordFulkersonAllocation
 from techniques.dynamic_allocation import DynamicProgrammingAllocation
 from techniques.brute_force_allocation import BruteForceAllocation
 from techniques.genetic_allocation import GeneticAlgorithmAllocation
@@ -75,7 +75,6 @@ def main():
             print(f"  Pipeline Losses: {test_case['pipeline_losses']}")
             print(f"  Expected Output: {test_case['expected_output']}")
             print(f"  Output: {output}")
-            # print(f"  Match Expected: {technique_result['match_expected']}")
 
             loss_ratios = {}
             for region, demand_value in demand.items():
@@ -86,7 +85,6 @@ def main():
                     loss_ratios[region] = None  
 
             print(f"  Loss Ratio: {loss_ratios}")
-            # print(f"  Match Expected: {technique_result['match_expected']}")
             print("-" * 50)
 
 
