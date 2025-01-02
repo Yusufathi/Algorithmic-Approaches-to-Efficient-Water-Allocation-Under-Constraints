@@ -57,7 +57,7 @@ def test_techniques(test_cases, techniques):
     return results
 
 def main():
-    test_cases_file = "./test_cases.json"  # Use JSON file
+    test_cases_file = "./test_cases.json" 
     test_cases = read_test_cases(test_cases_file)
     
     results = test_techniques(test_cases, techniques)

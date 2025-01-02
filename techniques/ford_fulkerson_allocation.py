@@ -1,6 +1,11 @@
 from .allocation_technique import AllocationTechnique
 from collections import defaultdict, deque
 
+
+#TODO: Add the condition where the loss is 1.
+#TODO: Add the condition  where the demand is 0.
+#TODO: Add the condition where the water supply is 0.
+
 class FordFulkersonAllocation(AllocationTechnique):
     """
     Greedy approach for water allocation Using Ford-Fulkerson Algorithm
@@ -32,6 +37,7 @@ class FordFulkersonAllocation(AllocationTechnique):
         for region, demand in demands.items():
             graph[region][sink] = demand
         max_flow, flow_network = self._ford_fulkerson(graph, source, sink)
+
         allocation = {}
         for region in demands.keys():
             allocated_flow = flow_network[source].get(region, 0)
