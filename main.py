@@ -8,8 +8,8 @@ from techniques.genetic_allocation import GeneticAlgorithmAllocation
 
 # Modify this for the technique you want to be tested. for example, if you want to use only the greedy allocation technique, comment the other approaches.
 techniques = [
-    FordFulkersonAllocation()
-    # DynamicProgrammingAllocation(),
+    # FordFulkersonAllocation()
+    DynamicProgrammingAllocation(),
     # BruteForceAllocation(),
     # GeneticAlgorithmAllocation()
 ]

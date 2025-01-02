@@ -43,7 +43,10 @@ class DynamicProgrammingAllocation(AllocationTechnique):
 
         loss_ratio = {}
         for i in (allocations):
-            loss_ratio[i] = (allocations[i] / demands[i])
+            if (demands[i] != 0):
+                loss_ratio[i] = (allocations[i] / demands[i])
+            else:
+                loss_ratio[i] = 0
         print("Loss Ratio: ", loss_ratio)
 
         return allocations
