@@ -10,7 +10,7 @@ class FordFulkersonAllocation(AllocationTechnique):
     Greedy approach for water allocation Using Ford-Fulkerson Algorithm
     """
 
-    def allocate(self, water_supply, demands, pipeline_losses):
+    def allocate(self, water_supply, demands, pipeline_losses, weights):
         """
         Allocate water using the Ford-Fulkerson algorithm.
 

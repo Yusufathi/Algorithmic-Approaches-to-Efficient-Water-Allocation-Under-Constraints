@@ -6,7 +6,7 @@ class AllocationTechnique(ABC):
     """
 
     @abstractmethod
-    def allocate(self, water_supply, demands, pipeline_losses):
+    def allocate(self, water_supply, demands, pipeline_losses,weights):
         """
         Abstract method to allocate water.
 

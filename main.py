@@ -7,10 +7,18 @@ from techniques.genetic_allocation import GeneticAlgorithmAllocation
 
 # Modify this for the technique you want to be tested. for example, if you want to use only the greedy allocation technique, comment the other approaches.
 techniques = [
-    # FordFulkersonAllocation()
+    FordFulkersonAllocation()
     # DynamicProgrammingAllocation(),
-    BruteForceAllocation()
+    # BruteForceAllocation()
     # GeneticAlgorithmAllocation()
+]
+
+# Overall_Efficiency = (w1 * Utilization_Efficiency) + (w2 * Loss_Efficiency) + (w3 * Fairness_Index) 
+# Effiency Metrics
+weights = [
+    40, # Utilization Efficiency
+    40, # Loss Efficiency
+    20  # Fairness Index
 ]
 
 def read_test_cases(file_path):
@@ -45,7 +53,8 @@ def test_techniques(test_cases, techniques):
             output = technique.allocate(
                 test_case["water_supply"], 
                 test_case["demands"], 
-                test_case["pipeline_losses"]
+                test_case["pipeline_losses"],
+                weights
             )
             case_results["results"].append({
                 "technique": technique.__class__.__name__,

@@ -6,7 +6,7 @@ class BruteForceAllocation(AllocationTechnique):
     Brute force approach for water allocation.
     """
 
-    def allocate(self, water_supply, demands, pipeline_losses):
+    def allocate(self, water_supply, demands, pipeline_losses,weights):
         regions = list(demands.keys())
         
         max_allocation = {region: min(demands[region], water_supply) for region in regions}
