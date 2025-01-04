@@ -17,5 +17,6 @@ class AllocationTechnique(ABC):
 
         Returns:
             dict: Allocation of water to each region.
+            dict: for all the effiency metrics we have. eg, metrics : { 'util': 0.95, 'loss': 0.59, 'fairness': 0.80, 'overall': 0.9}
         """
         pass

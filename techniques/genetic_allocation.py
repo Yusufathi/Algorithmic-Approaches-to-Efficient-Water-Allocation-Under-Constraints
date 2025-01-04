@@ -22,7 +22,12 @@ class GeneticAlgorithmAllocation(AllocationTechnique):
                 {
                     "R1": 380,
                     "R2": 290,
-                    "R3": 330
+                    "R3": 330,
+                    'util': 0.95,
+                    'loss': 0.59,
+                    'fairness': 0.80,
+                    'overall': 0.9
+
                 }
         """
         pass

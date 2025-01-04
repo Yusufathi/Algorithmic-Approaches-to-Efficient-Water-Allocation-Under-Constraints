@@ -6,7 +6,31 @@ class BruteForceAllocation(AllocationTechnique):
     Brute force approach for water allocation.
     """
 
-    def allocate(self, water_supply, demands, pipeline_losses,weights):
+    def allocate(self, water_supply, demands, pipeline_losses, weights):
+        """
+        Abstract method to allocate water.
+
+        Args:
+            water_supply (int): Total available water supply.
+            demands (dict): Dictionary with region names as keys and their water demands as values.
+                            Example: {"R1": 400, "R2": 300, "R3": 500}
+            pipeline_losses (dict): Dictionary with region names as keys and pipeline loss percentages as values.
+                                    Example: {"R1": 0.05, "R2": 0.03, "R3": 0.07}
+
+        Returns:
+            dict: Allocation of water to each region after considering demands and pipeline losses.
+                Example Output:
+                {
+                    "R1": 380,
+                    "R2": 290,
+                    "R3": 330,
+                    'util': 0.95,
+                    'loss': 0.59,
+                    'fairness': 0.80,
+                    'overall': 0.9
+
+                }
+        """
         regions = list(demands.keys())
         
         max_allocation = {region: min(demands[region], water_supply) for region in regions}
@@ -48,9 +72,9 @@ class BruteForceAllocation(AllocationTechnique):
             ) / len(regions)
             
             overall_efficiency = (
-                0.4 * utilization_efficiency +
-                0.4 * loss_efficiency +
-                0.2 * fairness_index
+                weights[0] * utilization_efficiency +
+                weights[1] * loss_efficiency +
+                weights[2] * fairness_index
             )
             
             if overall_efficiency > max_efficiency:

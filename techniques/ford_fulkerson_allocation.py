@@ -23,6 +23,17 @@ class FordFulkersonAllocation(AllocationTechnique):
 
         Returns:
             dict: Allocation of water to each region after considering demands and pipeline losses.
+                Example Output:
+                {
+                    "R1": 380,
+                    "R2": 290,
+                    "R3": 330,
+                    'util': 0.95,
+                    'loss': 0.59,
+                    'fairness': 0.80,
+                    'overall': 0.9
+
+                }
         """
         graph = defaultdict(dict)
         source = "source"
