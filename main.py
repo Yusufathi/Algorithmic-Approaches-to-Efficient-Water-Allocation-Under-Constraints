@@ -23,15 +23,6 @@ weights = [
 ]
 
 def read_test_cases(file_path):
-    """
-    Reads test cases from a JSON file.
-
-    Args:
-        file_path (str): Path to the test cases file.
-
-    Returns:
-        list: A list of dictionaries, each containing a test case.
-    """
     if not os.path.exists(file_path):
         raise FileNotFoundError(f"Test cases file not found: {file_path}")
     
