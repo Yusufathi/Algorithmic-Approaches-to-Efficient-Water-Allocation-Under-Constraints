@@ -30,29 +30,39 @@ class DynamicProgrammingAllocation(AllocationTechnique):
 
                 }
         """
-        
+        allocations = {}
         adjusted_demands = {}
         for demand, loss in zip(demands, pipeline_losses):
+            if (pipeline_losses[demand] == 1.0):
+                allocations[demand] = 0
+                continue
             adjusted_demands[demand] = demands[demand] + (demands[demand] * pipeline_losses[loss])
-        print("Adjusted Demands: ",adjusted_demands)
 
         total_adjusted_demand = 0
         for demand in adjusted_demands:
             total_adjusted_demand += adjusted_demands[demand]
-        print("Total Adjusted Demand: ", total_adjusted_demand)
 
-        allocations = {}
-        for adj_demand in adjusted_demands:
-            allocations[adj_demand] = water_supply * (adjusted_demands[adj_demand] / total_adjusted_demand)
-        print("Allocations: ", allocations)
+        # supplying based on whether we have excess water or not
+        if (water_supply > total_adjusted_demand):
+            for adj_demand in adjusted_demands:
+                allocations[adj_demand] = adjusted_demands[adj_demand]
+
+        else:
+            for adj_demand in adjusted_demands:
+                allocations[adj_demand] = water_supply * (adjusted_demands[adj_demand] / total_adjusted_demand)
+
+        # currently, the allocations stores the water supply SENT to the region, 
+        # the following section adjusts the allocations to show the final water supply RECEIVED by the region after pipeline loss
+        for i in (allocations):
+            if (allocations[i] == 0):
+                continue
+            allocations[i] = round(allocations[i] - (demands[i] * pipeline_losses[i]), 2)
 
         loss_ratio = {}
         for i in (allocations):
-            if (demands[i] != 0):
-                loss_ratio[i] = (allocations[i] / demands[i])
-            else:
+            if (allocations[i] == 0):
                 loss_ratio[i] = 0
-        print("Loss Ratio: ", loss_ratio)
-
+                continue
+            loss_ratio[i] = (allocations[i] / demands[i])
+            
         return allocations
-        # pass

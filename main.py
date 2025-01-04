@@ -9,8 +9,8 @@ from techniques.genetic_allocation import GeneticAlgorithmAllocation
 # for example, if you want to use only the greedy allocation technique, comment the other approaches.
 techniques = [
     # FordFulkersonAllocation()
-    # DynamicProgrammingAllocation(),
-    BruteForceAllocation()
+    DynamicProgrammingAllocation(),
+    # BruteForceAllocation()
     # GeneticAlgorithmAllocation()
 ]
 
