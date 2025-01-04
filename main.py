@@ -16,9 +16,9 @@ techniques = [
 # Overall_Efficiency = (w1 * Utilization_Efficiency) + (w2 * Loss_Efficiency) + (w3 * Fairness_Index) 
 # Effiency Metrics
 weights = [
-    40, # Utilization Efficiency
-    40, # Loss Efficiency
-    20  # Fairness Index
+    0.40, # Utilization Efficiency
+    0.40, # Loss Efficiency
+    0.20  # Fairness Index
 ]
 
 def read_test_cases(file_path):
@@ -37,8 +37,6 @@ def read_test_cases(file_path):
     with open(file_path, 'r') as file:
         test_cases = json.load(file)
     
-    # Debugging: Print parsed test cases
-    # print("Parsed Test Cases:", test_cases)
     return test_cases
 
 
@@ -77,23 +75,31 @@ def main():
             output = technique_result["output"]
             demand = test_case["demands"]
 
+            # Extract metrics from the output and separate them from the allocation
+            metrics = {k: v for k, v in output.items() if k in ["util", "loss", "fairness", "overall"]}
+            allocation = {k: v for k, v in output.items() if k not in metrics}
+
             print(f"  Technique: {technique_result['technique']}")
             print(f"  Water Supply: {test_case['water_supply']}")
             print(f"  Demands: {demand}")
             print(f"  Pipeline Losses: {test_case['pipeline_losses']}")
             print(f"  Expected Output: {test_case['expected_output']}")
-            print(f"  Output: {output}")
+            print(f"  Output: {allocation}")
 
+            
             loss_ratios = {}
             for region, demand_value in demand.items():
-                output_value = output.get(region, 0)
+                output_value = allocation.get(region, 0)
                 if demand_value > 0:
-                    loss_ratios[region] = (output_value / demand_value)
+                    loss_ratios[region] = round(output_value / demand_value, 2)
                 else:
-                    loss_ratios[region] = None  
+                    loss_ratios[region] = None
 
-            print(f"  Loss Ratio: {loss_ratios}")
+            print(f"  Supplied Ratio: {loss_ratios}")
+            print(f"  Metrics: {metrics}")
             print("-" * 50)
+
+
 
 
 if __name__ == "__main__":
