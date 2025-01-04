@@ -7,27 +7,6 @@ class FordFulkersonAllocation(AllocationTechnique):
     def allocate(self, water_supply, demands, pipeline_losses, weights):
         """
         Allocate water using the Ford-Fulkerson algorithm.
-
-        Args:
-            water_supply (int): Total available water supply.
-            demands (dict): Dictionary with region names as keys and their water demands as values.
-                            Example: {"R1": 400, "R2": 300, "R3": 500}
-            pipeline_losses (dict): Dictionary with region names as keys and pipeline loss percentages as values.
-                                    Example: {"R1": 0.05, "R2": 0.03, "R3": 0.07}
-            weights (list): List of normalized weights [w1, w2, w3] for Utilization, Loss, and Fairness indices.
-
-        Returns:
-            dict: Allocation of water to each region after considering demands and pipeline losses.
-                Example Output:
-                {
-                    "R1": 380,
-                    "R2": 290,
-                    "R3": 330,
-                    "util": 0.95,
-                    "loss": 0.59,
-                    "fairness": 0.80,
-                    "overall": 0.88
-                }
         """
         # Handle edge cases
         if water_supply == 0:
@@ -37,7 +16,7 @@ class FordFulkersonAllocation(AllocationTechnique):
         if all(pipeline_losses.get(region, 0) == 1 for region in demands):
             return {**{region: 0 for region in demands}, "util": 0, "loss": 1, "fairness": 0, "overall": 0}
 
-        # Step 1: Build the graph
+        # Build the graph
         graph = defaultdict(dict)
         source = "source"
         sink = "sink"
@@ -47,37 +26,39 @@ class FordFulkersonAllocation(AllocationTechnique):
         for region, demand in demands.items():
             graph[region][sink] = demand
 
-        # Step 2: Run Ford-Fulkerson
+        # Run Ford-Fulkerson
         max_flow, flow_network = self._ford_fulkerson(graph, source, sink)
 
-        # Step 3: Calculate allocation
+        # Allocation logic
         allocation = {}
         total_allocated = 0
         total_losses = 0
         fairness_sum = 0
+        remaining_supply = water_supply
 
-        for region in demands.keys():
-            allocated_flow = flow_network[source].get(region, 0)
+        for region, demand_value in demands.items():
+            allocated_flow = min(flow_network[source].get(region, 0), remaining_supply)
             actual_allocation = int(allocated_flow * (1 - pipeline_losses.get(region, 0)))
-            allocation[region] = actual_allocation
-            total_allocated += actual_allocation
+            allocation[region] = min(actual_allocation, remaining_supply)
+            remaining_supply -= allocation[region]
+            total_allocated += allocation[region]
             total_losses += allocated_flow * pipeline_losses.get(region, 0)
-            if demands[region] > 0:
-                fairness_sum += actual_allocation / demands[region]
+            if demand_value > 0:
+                fairness_sum += allocation[region] / demand_value
 
-        # Step 4: Calculate metrics
-        utilization = total_allocated / water_supply
+        # Metrics
+        utilization = min(total_allocated / water_supply, 1)
         loss = 1 - (total_losses / water_supply)
-        fairness = fairness_sum / len(demands)
+        fairness = fairness_sum / len([region for region in demands if demands[region] > 0])
 
-        # Step 5: Calculate overall efficiency
-        w1, w2, w3 = weights  # Extract weights directly
+        # Overall efficiency
+        w1, w2, w3 = weights
         overall_efficiency = (w1 * utilization) + (w2 * loss) + (w3 * fairness)
 
-        # Include metrics in the output
+        # Return results
         return {**allocation, "util": round(utilization, 2), "loss": round(loss, 2), "fairness": round(fairness, 2), "overall": round(overall_efficiency, 2)}
 
-    
+   
     def _ford_fulkerson(self, graph, source, sink):
         """
         Implements the Ford-Fulkerson Algorithm for maximum flow.

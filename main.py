@@ -5,7 +5,8 @@ from techniques.dynamic_allocation import DynamicProgrammingAllocation
 from techniques.brute_force_allocation import BruteForceAllocation
 from techniques.genetic_allocation import GeneticAlgorithmAllocation
 
-# Modify this for the technique you want to be tested. for example, if you want to use only the greedy allocation technique, comment the other approaches.
+# Modify this for the technique you want to be tested. 
+# for example, if you want to use only the greedy allocation technique, comment the other approaches.
 techniques = [
     FordFulkersonAllocation()
     # DynamicProgrammingAllocation(),
@@ -16,9 +17,9 @@ techniques = [
 # Overall_Efficiency = (w1 * Utilization_Efficiency) + (w2 * Loss_Efficiency) + (w3 * Fairness_Index) 
 # Effiency Metrics
 weights = [
-    0.40, # Utilization Efficiency
-    0.40, # Loss Efficiency
-    0.20  # Fairness Index
+    0.30, # Utilization Efficiency
+    0.30, # Loss Efficiency
+    0.40  # Fairness Index
 ]
 
 def read_test_cases(file_path):
@@ -75,7 +76,6 @@ def main():
             output = technique_result["output"]
             demand = test_case["demands"]
 
-            # Extract metrics from the output and separate them from the allocation
             metrics = {k: v for k, v in output.items() if k in ["util", "loss", "fairness", "overall"]}
             allocation = {k: v for k, v in output.items() if k not in metrics}
 
@@ -83,7 +83,7 @@ def main():
             print(f"  Water Supply: {test_case['water_supply']}")
             print(f"  Demands: {demand}")
             print(f"  Pipeline Losses: {test_case['pipeline_losses']}")
-            print(f"  Expected Output: {test_case['expected_output']}")
+            # print(f"  Expected Output: {test_case['expected_output']}")
             print(f"  Output: {allocation}")
 
             
@@ -97,7 +97,7 @@ def main():
 
             print(f"  Supplied Ratio: {loss_ratios}")
             print(f"  Metrics: {metrics}")
-            print("-" * 50)
+            print("-" * 100)
 
 
 
