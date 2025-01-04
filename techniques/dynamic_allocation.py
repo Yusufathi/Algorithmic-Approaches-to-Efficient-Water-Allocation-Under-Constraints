@@ -58,6 +58,17 @@ class DynamicProgrammingAllocation(AllocationTechnique):
                 continue
             allocations[i] = round(allocations[i] - (demands[i] * pipeline_losses[i]), 2)
 
+        ### Evaluation metrics:
+        total_allocated_water = sum(allocations.values())
+        utilization_efficiency = total_allocated_water / water_supply
+        
+        total_water_losses = sum(allocations[region] * pipeline_losses[region] for region in demands)
+        loss_efficiency = 1 - (total_water_losses / water_supply)
+        
+        fairness_index = (1/len(demands)) * sum(allocations[region] / demands[region] for region in demands) 
+        
+        overall_efficiency = (weights[0] * utilization_efficiency) + (weights[1] * loss_efficiency) + (weights[2] * fairness_index)
+        
         loss_ratio = {}
         for i in (allocations):
             if (allocations[i] == 0):
@@ -65,4 +76,10 @@ class DynamicProgrammingAllocation(AllocationTechnique):
                 continue
             loss_ratio[i] = (allocations[i] / demands[i])
             
-        return allocations
+        return {
+                **allocations,
+                "Utilization Efficiency": utilization_efficiency,
+                "Loss Efficiency": loss_efficiency,
+                "Fairness Index": fairness_index,
+                "Overall Efficiency": overall_efficiency
+                }
