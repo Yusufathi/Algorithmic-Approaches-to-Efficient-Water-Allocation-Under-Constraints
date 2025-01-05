@@ -1,0 +1,636 @@
+{
+    "execution_results": [
+        {
+            "test_case": "Test Case 1: Simple Allocation",
+            "techniques": [
+                {
+                    "technique": "FordFulkersonAllocation",
+                    "output": {
+                        "R1": 380,
+                        "R2": 291,
+                        "R3": 305
+                    },
+                    "metrics": {
+                        "util": 0.98,
+                        "loss": 0.95,
+                        "fairness": 0.84,
+                        "overall": 0.93
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.95,
+                        "R2": 0.97,
+                        "R3": 0.61
+                    },
+                    "analysis": {
+                        "time": 0.0002,
+                        "space": 0.003
+                    }
+                },
+                {
+                    "technique": "ProportionalAllocation",
+                    "output": {
+                        "R1": 312.28,
+                        "R2": 235.46,
+                        "R3": 388.26
+                    },
+                    "metrics": {
+                        "util": 1,
+                        "loss": 1,
+                        "fairness": 1,
+                        "overall": 1
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.78,
+                        "R2": 0.78,
+                        "R3": 0.78
+                    },
+                    "analysis": {
+                        "time": 0.0001,
+                        "space": 0.0006
+                    }
+                }
+            ]
+        },
+        {
+            "test_case": "Test Case 2: Limited Supply",
+            "techniques": [
+                {
+                    "technique": "FordFulkersonAllocation",
+                    "output": {
+                        "R1": 270,
+                        "R2": 190,
+                        "R3": 230,
+                        "R4": 96
+                    },
+                    "metrics": {
+                        "util": 0.98,
+                        "loss": 0.91,
+                        "fairness": 0.81,
+                        "overall": 0.91
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.9,
+                        "R2": 0.95,
+                        "R3": 0.92,
+                        "R4": 0.48
+                    },
+                    "analysis": {
+                        "time": 0.0001,
+                        "space": 0.004
+                    }
+                },
+                {
+                    "technique": "ProportionalAllocation",
+                    "output": {
+                        "R1": 225.32,
+                        "R2": 152.48,
+                        "R3": 188.9,
+                        "R4": 149.31
+                    },
+                    "metrics": {
+                        "util": 1,
+                        "loss": 1,
+                        "fairness": 1,
+                        "overall": 1
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.75,
+                        "R2": 0.76,
+                        "R3": 0.76,
+                        "R4": 0.75
+                    },
+                    "analysis": {
+                        "time": 0.0,
+                        "space": 0.0006
+                    }
+                }
+            ]
+        },
+        {
+            "test_case": "Test Case 3: High Loss Rates",
+            "techniques": [
+                {
+                    "technique": "FordFulkersonAllocation",
+                    "output": {
+                        "R1": 240,
+                        "R2": 170
+                    },
+                    "metrics": {
+                        "util": 0.82,
+                        "loss": 0.82,
+                        "fairness": 0.82,
+                        "overall": 0.82
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.8,
+                        "R2": 0.85
+                    },
+                    "analysis": {
+                        "time": 0.0001,
+                        "space": 0.0023
+                    }
+                },
+                {
+                    "technique": "ProportionalAllocation",
+                    "output": {
+                        "R1": 245.08,
+                        "R2": 164.92
+                    },
+                    "metrics": {
+                        "util": 1,
+                        "loss": 1,
+                        "fairness": 1,
+                        "overall": 1
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.82,
+                        "R2": 0.82
+                    },
+                    "analysis": {
+                        "time": 0.0,
+                        "space": 0.0006
+                    }
+                }
+            ]
+        },
+        {
+            "test_case": "Test Case 4: Equal Demands and Losses",
+            "techniques": [
+                {
+                    "technique": "FordFulkersonAllocation",
+                    "output": {
+                        "R1": 360,
+                        "R2": 360,
+                        "R3": 360
+                    },
+                    "metrics": {
+                        "util": 0.9,
+                        "loss": 0.9,
+                        "fairness": 0.9,
+                        "overall": 0.9
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.9,
+                        "R2": 0.9,
+                        "R3": 0.9
+                    },
+                    "analysis": {
+                        "time": 0.0002,
+                        "space": 0.003
+                    }
+                },
+                {
+                    "technique": "ProportionalAllocation",
+                    "output": {
+                        "R1": 360.0,
+                        "R2": 360.0,
+                        "R3": 360.0
+                    },
+                    "metrics": {
+                        "util": 1,
+                        "loss": 1,
+                        "fairness": 1,
+                        "overall": 1
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.9,
+                        "R2": 0.9,
+                        "R3": 0.9
+                    },
+                    "analysis": {
+                        "time": 0.0,
+                        "space": 0.0006
+                    }
+                }
+            ]
+        },
+        {
+            "test_case": "Test Case 5: Zero Loss",
+            "techniques": [
+                {
+                    "technique": "FordFulkersonAllocation",
+                    "output": {
+                        "R1": 250,
+                        "R2": 250
+                    },
+                    "metrics": {
+                        "util": 1.0,
+                        "loss": 1.0,
+                        "fairness": 1.0,
+                        "overall": 1.0
+                    },
+                    "supplied_ratio": {
+                        "R1": 1.0,
+                        "R2": 1.0
+                    },
+                    "analysis": {
+                        "time": 0.0001,
+                        "space": 0.002
+                    }
+                },
+                {
+                    "technique": "ProportionalAllocation",
+                    "output": {
+                        "R1": 250.0,
+                        "R2": 250.0
+                    },
+                    "metrics": {
+                        "util": 1,
+                        "loss": 1,
+                        "fairness": 1,
+                        "overall": 1
+                    },
+                    "supplied_ratio": {
+                        "R1": 1.0,
+                        "R2": 1.0
+                    },
+                    "analysis": {
+                        "time": 0.0,
+                        "space": 0.0006
+                    }
+                }
+            ]
+        },
+        {
+            "test_case": "Test Case 6: Excess Supply",
+            "techniques": [
+                {
+                    "technique": "FordFulkersonAllocation",
+                    "output": {
+                        "R1": 285,
+                        "R2": 285,
+                        "R3": 285,
+                        "R4": 285
+                    },
+                    "metrics": {
+                        "util": 0.76,
+                        "loss": 0.96,
+                        "fairness": 0.95,
+                        "overall": 0.89
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.95,
+                        "R2": 0.95,
+                        "R3": 0.95,
+                        "R4": 0.95
+                    },
+                    "analysis": {
+                        "time": 0.0001,
+                        "space": 0.0043
+                    }
+                },
+                {
+                    "technique": "ProportionalAllocation",
+                    "output": {
+                        "R1": 300.0,
+                        "R2": 300.0,
+                        "R3": 300.0,
+                        "R4": 300.0
+                    },
+                    "metrics": {
+                        "util": 1,
+                        "loss": 1,
+                        "fairness": 1,
+                        "overall": 1
+                    },
+                    "supplied_ratio": {
+                        "R1": 1.0,
+                        "R2": 1.0,
+                        "R3": 1.0,
+                        "R4": 1.0
+                    },
+                    "analysis": {
+                        "time": 0.0,
+                        "space": 0.0006
+                    }
+                }
+            ]
+        },
+        {
+            "test_case": "Test Case 7: Unequal Demands with High Supply",
+            "techniques": [
+                {
+                    "technique": "FordFulkersonAllocation",
+                    "output": {
+                        "R1": 720,
+                        "R2": 510,
+                        "R3": 380
+                    },
+                    "metrics": {
+                        "util": 0.81,
+                        "loss": 0.91,
+                        "fairness": 0.9,
+                        "overall": 0.87
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.9,
+                        "R2": 0.85,
+                        "R3": 0.95
+                    },
+                    "analysis": {
+                        "time": 0.0001,
+                        "space": 0.003
+                    }
+                },
+                {
+                    "technique": "ProportionalAllocation",
+                    "output": {
+                        "R1": 800.0,
+                        "R2": 600.0,
+                        "R3": 400.0
+                    },
+                    "metrics": {
+                        "util": 1,
+                        "loss": 1,
+                        "fairness": 1,
+                        "overall": 1
+                    },
+                    "supplied_ratio": {
+                        "R1": 1.0,
+                        "R2": 1.0,
+                        "R3": 1.0
+                    },
+                    "analysis": {
+                        "time": 0.0,
+                        "space": 0.0006
+                    }
+                }
+            ]
+        },
+        {
+            "test_case": "Test Case 8: All Regions with Same Losses",
+            "techniques": [
+                {
+                    "technique": "FordFulkersonAllocation",
+                    "output": {
+                        "R1": 180,
+                        "R2": 180,
+                        "R3": 270,
+                        "R4": 270
+                    },
+                    "metrics": {
+                        "util": 0.9,
+                        "loss": 0.9,
+                        "fairness": 0.9,
+                        "overall": 0.9
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.9,
+                        "R2": 0.9,
+                        "R3": 0.9,
+                        "R4": 0.9
+                    },
+                    "analysis": {
+                        "time": 0.0001,
+                        "space": 0.004
+                    }
+                },
+                {
+                    "technique": "ProportionalAllocation",
+                    "output": {
+                        "R1": 180.0,
+                        "R2": 180.0,
+                        "R3": 270.0,
+                        "R4": 270.0
+                    },
+                    "metrics": {
+                        "util": 1,
+                        "loss": 1,
+                        "fairness": 1,
+                        "overall": 1
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.9,
+                        "R2": 0.9,
+                        "R3": 0.9,
+                        "R4": 0.9
+                    },
+                    "analysis": {
+                        "time": 0.0001,
+                        "space": 0.0006
+                    }
+                }
+            ]
+        },
+        {
+            "test_case": "Test Case 9: Unequal Losses and Demands",
+            "techniques": [
+                {
+                    "technique": "FordFulkersonAllocation",
+                    "output": {
+                        "R1": 475,
+                        "R2": 360,
+                        "R3": 255,
+                        "R4": 160,
+                        "R5": 75
+                    },
+                    "metrics": {
+                        "util": 0.66,
+                        "loss": 0.91,
+                        "fairness": 0.85,
+                        "overall": 0.81
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.95,
+                        "R2": 0.9,
+                        "R3": 0.85,
+                        "R4": 0.8,
+                        "R5": 0.75
+                    },
+                    "analysis": {
+                        "time": 0.0001,
+                        "space": 0.0048
+                    }
+                },
+                {
+                    "technique": "ProportionalAllocation",
+                    "output": {
+                        "R1": 500.0,
+                        "R2": 400.0,
+                        "R3": 300.0,
+                        "R4": 200.0,
+                        "R5": 100.0
+                    },
+                    "metrics": {
+                        "util": 1,
+                        "loss": 1,
+                        "fairness": 1,
+                        "overall": 1
+                    },
+                    "supplied_ratio": {
+                        "R1": 1.0,
+                        "R2": 1.0,
+                        "R3": 1.0,
+                        "R4": 1.0,
+                        "R5": 1.0
+                    },
+                    "analysis": {
+                        "time": 0.0,
+                        "space": 0.0006
+                    }
+                }
+            ]
+        },
+        {
+            "test_case": "Test Case 10: Zero Demand",
+            "techniques": [
+                {
+                    "technique": "FordFulkersonAllocation",
+                    "output": {
+                        "R1": 0,
+                        "R2": 180,
+                        "R3": 240
+                    },
+                    "metrics": {
+                        "util": 0.84,
+                        "loss": 0.84,
+                        "fairness": 0.85,
+                        "overall": 0.84
+                    },
+                    "supplied_ratio": {
+                        "R1": null,
+                        "R2": 0.9,
+                        "R3": 0.8
+                    },
+                    "analysis": {
+                        "time": 0.0001,
+                        "space": 0.0024
+                    }
+                },
+                {
+                    "technique": "ProportionalAllocation",
+                    "output": {
+                        "R1": 0.0,
+                        "R2": 169.66,
+                        "R3": 250.34
+                    },
+                    "metrics": {
+                        "util": 1,
+                        "loss": 1,
+                        "fairness": 1,
+                        "overall": 1
+                    },
+                    "supplied_ratio": {
+                        "R1": null,
+                        "R2": 0.85,
+                        "R3": 0.83
+                    },
+                    "analysis": {
+                        "time": 0.0,
+                        "space": 0.0006
+                    }
+                }
+            ]
+        },
+        {
+            "test_case": "Test Case 11: Extreme Shortage",
+            "techniques": [
+                {
+                    "technique": "FordFulkersonAllocation",
+                    "output": {
+                        "R1": 180,
+                        "R2": 16
+                    },
+                    "metrics": {
+                        "util": 0.98,
+                        "loss": 0.88,
+                        "fairness": 0.21,
+                        "overall": 0.71
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.36,
+                        "R2": 0.05
+                    },
+                    "analysis": {
+                        "time": 0.0,
+                        "space": 0.0021
+                    }
+                },
+                {
+                    "technique": "ProportionalAllocation",
+                    "output": {
+                        "R1": 70.88,
+                        "R2": 19.12
+                    },
+                    "metrics": {
+                        "util": 0,
+                        "loss": 1,
+                        "fairness": 0,
+                        "overall": 1
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.14,
+                        "R2": 0.06
+                    },
+                    "analysis": {
+                        "time": 0.0,
+                        "space": 0.0006
+                    }
+                }
+            ]
+        },
+        {
+            "test_case": "Test Case 12: Balanced Scenario",
+            "techniques": [
+                {
+                    "technique": "FordFulkersonAllocation",
+                    "output": {
+                        "R1": 380,
+                        "R2": 285,
+                        "R3": 285
+                    },
+                    "metrics": {
+                        "util": 0.95,
+                        "loss": 0.95,
+                        "fairness": 0.95,
+                        "overall": 0.95
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.95,
+                        "R2": 0.95,
+                        "R3": 0.95
+                    },
+                    "analysis": {
+                        "time": 0.0001,
+                        "space": 0.003
+                    }
+                },
+                {
+                    "technique": "ProportionalAllocation",
+                    "output": {
+                        "R1": 380.0,
+                        "R2": 285.0,
+                        "R3": 285.0
+                    },
+                    "metrics": {
+                        "util": 1,
+                        "loss": 1,
+                        "fairness": 1,
+                        "overall": 1
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.95,
+                        "R2": 0.95,
+                        "R3": 0.95
+                    },
+                    "analysis": {
+                        "time": 0.0,
+                        "space": 0.0006
+                    }
+                }
+            ]
+        }
+    ],
+    "averages": [
+        {
+            "technique": "FordFulkersonAllocation",
+            "average_time": 0.0001,
+            "average_space": 0.0032
+        },
+        {
+            "technique": "ProportionalAllocation",
+            "average_time": 0.0,
+            "average_space": 0.0006
+        }
+    ]
+}
