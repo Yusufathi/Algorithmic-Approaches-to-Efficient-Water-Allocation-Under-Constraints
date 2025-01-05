@@ -4,6 +4,8 @@ import numpy as np
 
 import numpy as np
 
+import numpy as np
+
 class GeneticAlgorithmAllocation(AllocationTechnique):
     """
     Genetic algorithm approach for water allocation.
@@ -35,13 +37,14 @@ class GeneticAlgorithmAllocation(AllocationTechnique):
                       'overall': 0.9
                   }
         """
+        # Initialize the result dictionary with zero allocations for all regions
+        result = {region: 0 for region in demands}
+
         # Filter out regions with demand == 0 or loss == 1
         valid_regions = {name: {'demand': demands[name], 'loss': pipeline_losses[name]}
                          for name in demands
                          if demands[name] > 0 and pipeline_losses[name] < 1}
 
-        if not valid_regions:
-            raise ValueError("No valid regions to allocate water to.")
 
         # Calculate required needs considering pipeline losses
         self.calculate_required_needs(valid_regions)
@@ -89,8 +92,11 @@ class GeneticAlgorithmAllocation(AllocationTechnique):
 
         overall_efficiency = (w1 * utilization_efficiency) + (w2 * loss_efficiency) + (w3 * fairness_index)
 
-        # Prepare the final result dictionary
-        result = {region_name: allocation for allocation, region_name in zip(best_allocation, valid_regions.keys())}
+        # Update the result dictionary with allocations for valid regions
+        for allocation, region_name in zip(best_allocation, valid_regions.keys()):
+            result[region_name] = allocation
+
+        # Add metrics to the result dictionary
         result.update({
             'util': utilization_efficiency,
             'loss': loss_efficiency,
