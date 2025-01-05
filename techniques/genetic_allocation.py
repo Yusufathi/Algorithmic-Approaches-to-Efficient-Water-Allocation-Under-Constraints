@@ -8,31 +8,6 @@ class GeneticAlgorithmAllocation(AllocationTechnique):
     """
 
     def allocate(self, water_supply, demands, pipeline_losses, weights):
-        """
-        Allocates water to regions using a Genetic Algorithm and calculates specified metrics.
-
-        Args:
-            water_supply (int): Total available water supply.
-            demands (dict): Dictionary with region names as keys and their water demands as values.
-                            Example: {"R1": 400, "R2": 300, "R3": 500}
-            pipeline_losses (dict): Dictionary with region names as keys and pipeline loss percentages as values.
-                                    Example: {"R1": 0.05, "R2": 0.03, "R3": 0.07}
-            weights (tuple): Weights for the overall efficiency calculation (w1, w2, w3).
-
-        Returns:
-            dict: Allocation of water to each region after considering demands and pipeline losses,
-                  along with calculated metrics.
-                  Example Output:
-                  {
-                      "R1": 380,
-                      "R2": 290,
-                      "R3": 330,
-                      'util': 0.95,
-                      'loss': 0.59,
-                      'fairness': 0.80,
-                      'overall': 0.9
-                  }
-        """
         # Initialize the result dictionary with zero allocations for all regions
         result = {region: 0 for region in demands}
 
