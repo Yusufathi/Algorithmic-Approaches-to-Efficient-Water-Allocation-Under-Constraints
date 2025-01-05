@@ -35,13 +35,18 @@ class GeneticAlgorithmAllocation(AllocationTechnique):
                       'overall': 0.9
                   }
         """
-        # Combine demands and pipeline_losses into a single regions dictionary
-        regions = {name: {'demand': demands[name], 'loss': pipeline_losses[name]} for name in demands}
+        # Filter out regions with demand == 0 or loss == 1
+        valid_regions = {name: {'demand': demands[name], 'loss': pipeline_losses[name]}
+                         for name in demands
+                         if demands[name] > 0 and pipeline_losses[name] < 1}
+
+        if not valid_regions:
+            raise ValueError("No valid regions to allocate water to.")
 
         # Calculate required needs considering pipeline losses
-        self.calculate_required_needs(regions)
+        self.calculate_required_needs(valid_regions)
 
-        num_regions = len(regions)
+        num_regions = len(valid_regions)
         population_size = 100
         generations = 1000
         mutation_rate = 0.01
@@ -52,7 +57,7 @@ class GeneticAlgorithmAllocation(AllocationTechnique):
 
         # Main Genetic Algorithm loop
         for generation in range(generations):
-            fitnesses = [self.fitness(ind, regions) for ind in population]
+            fitnesses = [self.fitness(ind, valid_regions) for ind in population]
             population = self.selection(population, fitnesses, population_size)
             next_generation = []
             for i in range(0, population_size, 2):
@@ -66,26 +71,26 @@ class GeneticAlgorithmAllocation(AllocationTechnique):
                 print(f'Generation {generation}: Best Fitness = {max(fitnesses)}')
 
         # Determine the best solution
-        best_index = np.argmax([self.fitness(ind, regions) for ind in population])
+        best_index = np.argmax([self.fitness(ind, valid_regions) for ind in population])
         best_allocation = population[best_index]
 
         # Calculate metrics
         total_allocated_water = sum(best_allocation)
         utilization_efficiency = total_allocated_water / water_supply
 
-        total_water_losses = sum(allocation * regions[region_name]['loss']
-                                 for allocation, region_name in zip(best_allocation, regions.keys()))
+        total_water_losses = sum(allocation * valid_regions[region_name]['loss']
+                                 for allocation, region_name in zip(best_allocation, valid_regions.keys()))
         loss_efficiency = 1 - (total_water_losses / water_supply)
 
         fairness_index = (1 / num_regions) * sum(
-            allocation / regions[region_name]['demand']
-            for allocation, region_name in zip(best_allocation, regions.keys())
+            allocation / valid_regions[region_name]['demand']
+            for allocation, region_name in zip(best_allocation, valid_regions.keys())
         )
 
         overall_efficiency = (w1 * utilization_efficiency) + (w2 * loss_efficiency) + (w3 * fairness_index)
 
         # Prepare the final result dictionary
-        result = {region_name: allocation for allocation, region_name in zip(best_allocation, regions.keys())}
+        result = {region_name: allocation for allocation, region_name in zip(best_allocation, valid_regions.keys())}
         result.update({
             'util': utilization_efficiency,
             'loss': loss_efficiency,
