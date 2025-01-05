@@ -20,10 +20,10 @@ logging.basicConfig(
 
 # Modify this for the techniques to be tested.
 techniques = [
-    FordFulkersonAllocation(),
-    ProportionalAllocation()
-    # BruteForceAllocation(),
-    # GeneticAlgorithmAllocation()
+    # FordFulkersonAllocation(),
+    # ProportionalAllocation()
+    # # BruteForceAllocation(),
+    GeneticAlgorithmAllocation()
 ]
 
 # Efficiency Metrics Weights
