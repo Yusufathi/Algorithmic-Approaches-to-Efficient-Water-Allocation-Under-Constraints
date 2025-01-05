@@ -1,7 +1,7 @@
 import os
 import json
 from techniques.ford_fulkerson_allocation import FordFulkersonAllocation
-from techniques.dynamic_allocation import DynamicProgrammingAllocation
+from techniques.proportional_allocation import ProportionalAllocation
 from techniques.brute_force_allocation import BruteForceAllocation
 from techniques.genetic_allocation import GeneticAlgorithmAllocation
 
@@ -9,7 +9,7 @@ from techniques.genetic_allocation import GeneticAlgorithmAllocation
 # for example, if you want to use only the greedy allocation technique, comment the other approaches.
 techniques = [
     # FordFulkersonAllocation()
-    DynamicProgrammingAllocation(),
+    ProportionalAllocation(),
     # BruteForceAllocation()
     # GeneticAlgorithmAllocation()
 ]

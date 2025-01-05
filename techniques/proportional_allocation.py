@@ -1,6 +1,6 @@
 from .allocation_technique import AllocationTechnique
 
-class DynamicProgrammingAllocation(AllocationTechnique):
+class ProportionalAllocation(AllocationTechnique):
     """
     Dynamic programming approach for water allocation.
     """
@@ -30,6 +30,14 @@ class DynamicProgrammingAllocation(AllocationTechnique):
 
                 }
         """
+        
+        # if water_supply == 0:
+        #     return {**{region: 0 for region in demands}, "util": 0, "loss": 1, "fairness": 0, "overall": 0}
+        # if all(demand == 0 for demand in demands.values()):
+        #     return {**{region: 0 for region in demands}, "util": 0, "loss": 0, "fairness": 1, "overall": 0}
+        # if all(pipeline_losses.get(region, 0) == 1 for region in demands):
+        #     return {**{region: 0 for region in demands}, "util": 0, "loss": 1, "fairness": 0, "overall": 0}
+        
         allocations = {}
         adjusted_demands = {}
         for demand, loss in zip(demands, pipeline_losses):
@@ -65,7 +73,12 @@ class DynamicProgrammingAllocation(AllocationTechnique):
         total_water_losses = sum(allocations[region] * pipeline_losses[region] for region in demands)
         loss_efficiency = 1 - (total_water_losses / water_supply)
         
-        fairness_index = (1/len(demands)) * sum(allocations[region] / demands[region] for region in demands) 
+        # fairness_index = (1 / len(demands)) * sum(allocations[region] / demands[region] for region in demands)
+        
+        fairness_index = (1 / len(demands)) * sum(
+            allocations[region] / demands[region] if demands[region] != 0 else 0
+            for region in demands
+        )
         
         overall_efficiency = (weights[0] * utilization_efficiency) + (weights[1] * loss_efficiency) + (weights[2] * fairness_index)
         
@@ -78,8 +91,8 @@ class DynamicProgrammingAllocation(AllocationTechnique):
             
         return {
                 **allocations,
-                "Utilization Efficiency": utilization_efficiency,
-                "Loss Efficiency": loss_efficiency,
-                "Fairness Index": fairness_index,
-                "Overall Efficiency": overall_efficiency
+                "util": round(utilization_efficiency),
+                "loss": round(loss_efficiency),
+                "fairness": round(fairness_index),
+                "overall": round(overall_efficiency)
                 }
