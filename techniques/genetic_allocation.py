@@ -2,10 +2,6 @@ from .allocation_technique import AllocationTechnique
 
 import numpy as np
 
-import numpy as np
-
-import numpy as np
-
 class GeneticAlgorithmAllocation(AllocationTechnique):
     """
     Genetic algorithm approach for water allocation.
