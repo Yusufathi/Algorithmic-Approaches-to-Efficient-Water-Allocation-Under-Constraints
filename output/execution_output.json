@@ -1,33 +1,898 @@
 {
     "execution_results": [
         {
-            "test_case": "Test Case 9: Unequal Losses and Demands",
+            "test_case": "Test Case 1: Simple Allocation",
             "techniques": [
+                {
+                    "technique": "FordFulkersonAllocation",
+                    "output": {
+                        "R1": 380,
+                        "R2": 291,
+                        "R3": 305
+                    },
+                    "metrics": {
+                        "util": 0.98,
+                        "loss": 0.95,
+                        "fairness": 0.84,
+                        "overall": 0.93
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.95,
+                        "R2": 0.97,
+                        "R3": 0.61
+                    },
+                    "analysis": {
+                        "time": 0.0,
+                        "space": 0.003
+                    }
+                },
+                {
+                    "technique": "ProportionalAllocation",
+                    "output": {
+                        "R1": 312.28,
+                        "R2": 235.46,
+                        "R3": 388.26
+                    },
+                    "metrics": {
+                        "util": 1,
+                        "loss": 1,
+                        "fairness": 1,
+                        "overall": 1
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.78,
+                        "R2": 0.78,
+                        "R3": 0.78
+                    },
+                    "analysis": {
+                        "time": 0.0,
+                        "space": 0.0006
+                    }
+                },
+                {
+                    "technique": "BruteForceAllocation",
+                    "output": {
+                        "R1": 380.0,
+                        "R2": 291.0,
+                        "R3": 325.5
+                    },
+                    "metrics": {
+                        "util": 1.0,
+                        "loss": 0.95,
+                        "fairness": 0.86,
+                        "overall": 0.94
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.95,
+                        "R2": 0.97,
+                        "R3": 0.65
+                    },
+                    "analysis": {
+                        "time": 2.1146,
+                        "space": 0.0131
+                    }
+                },
                 {
                     "technique": "GeneticAlgorithmAllocation",
                     "output": {
-                        "R1": 561.7608556862707,
-                        "R2": 484.8347247948222,
-                        "R3": 369.64993198972115,
-                        "R4": 281.46192657524784,
-                        "R5": 140.1413136513385
+                        "R1": 289.15201527184774,
+                        "R2": 219.8437296377347,
+                        "R3": 369.8634618876321
                     },
                     "metrics": {
-                        "util": 0.9189243763487002,
-                        "loss": 0.8883266406049309,
-                        "fairness": 1.2752995465429917,
-                        "overall": 1.0151277198966684
+                        "util": 0.8788592067972145,
+                        "loss": 0.9530566450151413,
+                        "fairness": 0.7318064646935554,
+                        "overall": 0.860712487542391
                     },
                     "supplied_ratio": {
-                        "R1": 1.12,
-                        "R2": 1.21,
-                        "R3": 1.23,
-                        "R4": 1.41,
-                        "R5": 1.4
+                        "R1": 0.72,
+                        "R2": 0.73,
+                        "R3": 0.74
                     },
                     "analysis": {
-                        "time": 7.1197,
-                        "space": 0.0308
+                        "time": 4.256,
+                        "space": 0.0276
+                    }
+                }
+            ]
+        },
+        {
+            "test_case": "Test Case 2: Limited Supply",
+            "techniques": [
+                {
+                    "technique": "FordFulkersonAllocation",
+                    "output": {
+                        "R1": 270,
+                        "R2": 190,
+                        "R3": 230,
+                        "R4": 96
+                    },
+                    "metrics": {
+                        "util": 0.98,
+                        "loss": 0.91,
+                        "fairness": 0.81,
+                        "overall": 0.91
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.9,
+                        "R2": 0.95,
+                        "R3": 0.92,
+                        "R4": 0.48
+                    },
+                    "analysis": {
+                        "time": 0.0,
+                        "space": 0.004
+                    }
+                },
+                {
+                    "technique": "ProportionalAllocation",
+                    "output": {
+                        "R1": 225.32,
+                        "R2": 152.48,
+                        "R3": 188.9,
+                        "R4": 149.31
+                    },
+                    "metrics": {
+                        "util": 1,
+                        "loss": 1,
+                        "fairness": 1,
+                        "overall": 1
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.75,
+                        "R2": 0.76,
+                        "R3": 0.76,
+                        "R4": 0.75
+                    },
+                    "analysis": {
+                        "time": 0.0,
+                        "space": 0.0006
+                    }
+                },
+                {
+                    "technique": "BruteForceAllocation",
+                    "output": {
+                        "R1": 202.5,
+                        "R2": 190.0,
+                        "R3": 230.0,
+                        "R4": 176.0
+                    },
+                    "metrics": {
+                        "util": 1.0,
+                        "loss": 0.91,
+                        "fairness": 0.86,
+                        "overall": 0.93
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.68,
+                        "R2": 0.95,
+                        "R3": 0.92,
+                        "R4": 0.88
+                    },
+                    "analysis": {
+                        "time": 19.053,
+                        "space": 0.0104
+                    }
+                },
+                {
+                    "technique": "GeneticAlgorithmAllocation",
+                    "output": {
+                        "R1": 211.0720230069959,
+                        "R2": 123.04185917982802,
+                        "R3": 172.3068739115855,
+                        "R4": 138.9586578800107
+                    },
+                    "metrics": {
+                        "util": 0.8067242674730251,
+                        "loss": 0.9278513948522261,
+                        "fairness": 0.6757008727422138,
+                        "overall": 0.809811743636502
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.7,
+                        "R2": 0.62,
+                        "R3": 0.69,
+                        "R4": 0.69
+                    },
+                    "analysis": {
+                        "time": 3.4713,
+                        "space": 0.0293
+                    }
+                }
+            ]
+        },
+        {
+            "test_case": "Test Case 3: High Loss Rates",
+            "techniques": [
+                {
+                    "technique": "FordFulkersonAllocation",
+                    "output": {
+                        "R1": 240,
+                        "R2": 170
+                    },
+                    "metrics": {
+                        "util": 0.82,
+                        "loss": 0.82,
+                        "fairness": 0.82,
+                        "overall": 0.82
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.8,
+                        "R2": 0.85
+                    },
+                    "analysis": {
+                        "time": 0.0,
+                        "space": 0.0023
+                    }
+                },
+                {
+                    "technique": "ProportionalAllocation",
+                    "output": {
+                        "R1": 245.08,
+                        "R2": 164.92
+                    },
+                    "metrics": {
+                        "util": 1,
+                        "loss": 1,
+                        "fairness": 1,
+                        "overall": 1
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.82,
+                        "R2": 0.82
+                    },
+                    "analysis": {
+                        "time": 0.0,
+                        "space": 0.0006
+                    }
+                },
+                {
+                    "technique": "BruteForceAllocation",
+                    "output": {
+                        "R1": 240.0,
+                        "R2": 170.0
+                    },
+                    "metrics": {
+                        "util": 0.82,
+                        "loss": 0.85,
+                        "fairness": 0.82,
+                        "overall": 0.83
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.8,
+                        "R2": 0.85
+                    },
+                    "analysis": {
+                        "time": 0.008,
+                        "space": 0.009
+                    }
+                },
+                {
+                    "technique": "GeneticAlgorithmAllocation",
+                    "output": {
+                        "R1": 310.0898994468467,
+                        "R2": 194.48844071835993
+                    },
+                    "metrics": {
+                        "util": 1.0091566803304133,
+                        "loss": 0.8176175080057533,
+                        "fairness": 1.0030376008739776,
+                        "overall": 0.9402822461798516
+                    },
+                    "supplied_ratio": {
+                        "R1": 1.03,
+                        "R2": 0.97
+                    },
+                    "analysis": {
+                        "time": 3.6926,
+                        "space": 0.0265
+                    }
+                }
+            ]
+        },
+        {
+            "test_case": "Test Case 4: Equal Demands and Losses",
+            "techniques": [
+                {
+                    "technique": "FordFulkersonAllocation",
+                    "output": {
+                        "R1": 360,
+                        "R2": 360,
+                        "R3": 360
+                    },
+                    "metrics": {
+                        "util": 0.9,
+                        "loss": 0.9,
+                        "fairness": 0.9,
+                        "overall": 0.9
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.9,
+                        "R2": 0.9,
+                        "R3": 0.9
+                    },
+                    "analysis": {
+                        "time": 0.0,
+                        "space": 0.003
+                    }
+                },
+                {
+                    "technique": "ProportionalAllocation",
+                    "output": {
+                        "R1": 360.0,
+                        "R2": 360.0,
+                        "R3": 360.0
+                    },
+                    "metrics": {
+                        "util": 1,
+                        "loss": 1,
+                        "fairness": 1,
+                        "overall": 1
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.9,
+                        "R2": 0.9,
+                        "R3": 0.9
+                    },
+                    "analysis": {
+                        "time": 0.0,
+                        "space": 0.0006
+                    }
+                },
+                {
+                    "technique": "BruteForceAllocation",
+                    "output": {
+                        "R1": 360.0,
+                        "R2": 360.0,
+                        "R3": 360.0
+                    },
+                    "metrics": {
+                        "util": 0.9,
+                        "loss": 0.91,
+                        "fairness": 0.9,
+                        "overall": 0.9
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.9,
+                        "R2": 0.9,
+                        "R3": 0.9
+                    },
+                    "analysis": {
+                        "time": 1.8321,
+                        "space": 0.0127
+                    }
+                },
+                {
+                    "technique": "GeneticAlgorithmAllocation",
+                    "output": {
+                        "R1": 381.1514075564979,
+                        "R2": 373.2319665038779,
+                        "R3": 375.96151863295376
+                    },
+                    "metrics": {
+                        "util": 0.9419540772444412,
+                        "loss": 0.9058045922755559,
+                        "fairness": 0.9419540772444412,
+                        "overall": 0.9293017575053314
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.95,
+                        "R2": 0.93,
+                        "R3": 0.94
+                    },
+                    "analysis": {
+                        "time": 3.3719,
+                        "space": 0.0279
+                    }
+                }
+            ]
+        },
+        {
+            "test_case": "Test Case 5: Zero Loss",
+            "techniques": [
+                {
+                    "technique": "FordFulkersonAllocation",
+                    "output": {
+                        "R1": 250,
+                        "R2": 250
+                    },
+                    "metrics": {
+                        "util": 1.0,
+                        "loss": 1.0,
+                        "fairness": 1.0,
+                        "overall": 1.0
+                    },
+                    "supplied_ratio": {
+                        "R1": 1.0,
+                        "R2": 1.0
+                    },
+                    "analysis": {
+                        "time": 0.0,
+                        "space": 0.002
+                    }
+                },
+                {
+                    "technique": "ProportionalAllocation",
+                    "output": {
+                        "R1": 250.0,
+                        "R2": 250.0
+                    },
+                    "metrics": {
+                        "util": 1,
+                        "loss": 1,
+                        "fairness": 1,
+                        "overall": 1
+                    },
+                    "supplied_ratio": {
+                        "R1": 1.0,
+                        "R2": 1.0
+                    },
+                    "analysis": {
+                        "time": 0.0,
+                        "space": 0.0006
+                    }
+                },
+                {
+                    "technique": "BruteForceAllocation",
+                    "output": {
+                        "R1": 250.0,
+                        "R2": 250.0
+                    },
+                    "metrics": {
+                        "util": 1.0,
+                        "loss": 1.0,
+                        "fairness": 1.0,
+                        "overall": 1.0
+                    },
+                    "supplied_ratio": {
+                        "R1": 1.0,
+                        "R2": 1.0
+                    },
+                    "analysis": {
+                        "time": 0.0091,
+                        "space": 0.0085
+                    }
+                },
+                {
+                    "technique": "GeneticAlgorithmAllocation",
+                    "output": {
+                        "R1": 240.90455430765795,
+                        "R2": 240.30041908200647
+                    },
+                    "metrics": {
+                        "util": 0.9624099467793288,
+                        "loss": 1.0,
+                        "fairness": 0.9624099467793288,
+                        "overall": 0.9755664654065637
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.96,
+                        "R2": 0.96
+                    },
+                    "analysis": {
+                        "time": 3.3776,
+                        "space": 0.0263
+                    }
+                }
+            ]
+        },
+        {
+            "test_case": "Test Case 6: Excess Supply",
+            "techniques": [
+                {
+                    "technique": "FordFulkersonAllocation",
+                    "output": {
+                        "R1": 285,
+                        "R2": 285,
+                        "R3": 285,
+                        "R4": 285
+                    },
+                    "metrics": {
+                        "util": 0.76,
+                        "loss": 0.96,
+                        "fairness": 0.95,
+                        "overall": 0.89
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.95,
+                        "R2": 0.95,
+                        "R3": 0.95,
+                        "R4": 0.95
+                    },
+                    "analysis": {
+                        "time": 0.0,
+                        "space": 0.0043
+                    }
+                },
+                {
+                    "technique": "ProportionalAllocation",
+                    "output": {
+                        "R1": 300.0,
+                        "R2": 300.0,
+                        "R3": 300.0,
+                        "R4": 300.0
+                    },
+                    "metrics": {
+                        "util": 1,
+                        "loss": 1,
+                        "fairness": 1,
+                        "overall": 1
+                    },
+                    "supplied_ratio": {
+                        "R1": 1.0,
+                        "R2": 1.0,
+                        "R3": 1.0,
+                        "R4": 1.0
+                    },
+                    "analysis": {
+                        "time": 0.0,
+                        "space": 0.0006
+                    }
+                },
+                {
+                    "technique": "BruteForceAllocation",
+                    "output": {
+                        "R1": 285.0,
+                        "R2": 285.0,
+                        "R3": 285.0,
+                        "R4": 285.0
+                    },
+                    "metrics": {
+                        "util": 0.76,
+                        "loss": 0.96,
+                        "fairness": 0.95,
+                        "overall": 0.89
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.95,
+                        "R2": 0.95,
+                        "R3": 0.95,
+                        "R4": 0.95
+                    },
+                    "analysis": {
+                        "time": 46.7716,
+                        "space": 0.0113
+                    }
+                },
+                {
+                    "technique": "GeneticAlgorithmAllocation",
+                    "output": {
+                        "R1": 323.5063240660909,
+                        "R2": 325.293981110541,
+                        "R3": 316.3351945783784,
+                        "R4": 320.9616145925534
+                    },
+                    "metrics": {
+                        "util": 0.857398076231709,
+                        "loss": 0.9571300961884145,
+                        "fairness": 1.0717475952896365,
+                        "overall": 0.9566091389339341
+                    },
+                    "supplied_ratio": {
+                        "R1": 1.08,
+                        "R2": 1.08,
+                        "R3": 1.05,
+                        "R4": 1.07
+                    },
+                    "analysis": {
+                        "time": 3.3102,
+                        "space": 0.0289
+                    }
+                }
+            ]
+        },
+        {
+            "test_case": "Test Case 7: Unequal Demands with High Supply",
+            "techniques": [
+                {
+                    "technique": "FordFulkersonAllocation",
+                    "output": {
+                        "R1": 720,
+                        "R2": 510,
+                        "R3": 380
+                    },
+                    "metrics": {
+                        "util": 0.81,
+                        "loss": 0.91,
+                        "fairness": 0.9,
+                        "overall": 0.87
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.9,
+                        "R2": 0.85,
+                        "R3": 0.95
+                    },
+                    "analysis": {
+                        "time": 0.0,
+                        "space": 0.003
+                    }
+                },
+                {
+                    "technique": "ProportionalAllocation",
+                    "output": {
+                        "R1": 800.0,
+                        "R2": 600.0,
+                        "R3": 400.0
+                    },
+                    "metrics": {
+                        "util": 1,
+                        "loss": 1,
+                        "fairness": 1,
+                        "overall": 1
+                    },
+                    "supplied_ratio": {
+                        "R1": 1.0,
+                        "R2": 1.0,
+                        "R3": 1.0
+                    },
+                    "analysis": {
+                        "time": 0.0,
+                        "space": 0.0006
+                    }
+                },
+                {
+                    "technique": "BruteForceAllocation",
+                    "output": {
+                        "R1": 720.0,
+                        "R2": 510.0,
+                        "R3": 380.0
+                    },
+                    "metrics": {
+                        "util": 0.81,
+                        "loss": 0.92,
+                        "fairness": 0.9,
+                        "overall": 0.87
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.9,
+                        "R2": 0.85,
+                        "R3": 0.95
+                    },
+                    "analysis": {
+                        "time": 4.4345,
+                        "space": 0.0172
+                    }
+                },
+                {
+                    "technique": "GeneticAlgorithmAllocation",
+                    "output": {
+                        "R1": 885.8993829399197,
+                        "R2": 705.2140083943472,
+                        "R3": 419.77157527059404
+                    },
+                    "metrics": {
+                        "util": 1.0054424833024305,
+                        "loss": 0.8923196908416631,
+                        "fairness": 1.1107199491695434,
+                        "overall": 0.9974327457012957
+                    },
+                    "supplied_ratio": {
+                        "R1": 1.11,
+                        "R2": 1.18,
+                        "R3": 1.05
+                    },
+                    "analysis": {
+                        "time": 3.2101,
+                        "space": 0.0275
+                    }
+                }
+            ]
+        },
+        {
+            "test_case": "Test Case 8: All Regions with Same Losses",
+            "techniques": [
+                {
+                    "technique": "FordFulkersonAllocation",
+                    "output": {
+                        "R1": 180,
+                        "R2": 180,
+                        "R3": 270,
+                        "R4": 270
+                    },
+                    "metrics": {
+                        "util": 0.9,
+                        "loss": 0.9,
+                        "fairness": 0.9,
+                        "overall": 0.9
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.9,
+                        "R2": 0.9,
+                        "R3": 0.9,
+                        "R4": 0.9
+                    },
+                    "analysis": {
+                        "time": 0.0,
+                        "space": 0.004
+                    }
+                },
+                {
+                    "technique": "ProportionalAllocation",
+                    "output": {
+                        "R1": 180.0,
+                        "R2": 180.0,
+                        "R3": 270.0,
+                        "R4": 270.0
+                    },
+                    "metrics": {
+                        "util": 1,
+                        "loss": 1,
+                        "fairness": 1,
+                        "overall": 1
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.9,
+                        "R2": 0.9,
+                        "R3": 0.9,
+                        "R4": 0.9
+                    },
+                    "analysis": {
+                        "time": 0.0,
+                        "space": 0.0006
+                    }
+                },
+                {
+                    "technique": "BruteForceAllocation",
+                    "output": {
+                        "R1": 180.0,
+                        "R2": 180.0,
+                        "R3": 270.0,
+                        "R4": 270.0
+                    },
+                    "metrics": {
+                        "util": 0.9,
+                        "loss": 0.91,
+                        "fairness": 0.9,
+                        "overall": 0.9
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.9,
+                        "R2": 0.9,
+                        "R3": 0.9,
+                        "R4": 0.9
+                    },
+                    "analysis": {
+                        "time": 19.9138,
+                        "space": 0.0104
+                    }
+                },
+                {
+                    "technique": "GeneticAlgorithmAllocation",
+                    "output": {
+                        "R1": 183.09569536013635,
+                        "R2": 183.60970945845932,
+                        "R3": 279.2890868438136,
+                        "R4": 275.53309248412006
+                    },
+                    "metrics": {
+                        "util": 0.9215275841465294,
+                        "loss": 0.907847241585347,
+                        "fairness": 0.920733572129856,
+                        "overall": 0.9165012606451135
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.92,
+                        "R2": 0.92,
+                        "R3": 0.93,
+                        "R4": 0.92
+                    },
+                    "analysis": {
+                        "time": 3.4226,
+                        "space": 0.0292
+                    }
+                }
+            ]
+        },
+        {
+            "test_case": "Test Case 9: Unequal Losses and Demands",
+            "techniques": [
+                {
+                    "technique": "FordFulkersonAllocation",
+                    "output": {
+                        "R1": 475,
+                        "R2": 360,
+                        "R3": 255,
+                        "R4": 160,
+                        "R5": 75
+                    },
+                    "metrics": {
+                        "util": 0.66,
+                        "loss": 0.91,
+                        "fairness": 0.85,
+                        "overall": 0.81
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.95,
+                        "R2": 0.9,
+                        "R3": 0.85,
+                        "R4": 0.8,
+                        "R5": 0.75
+                    },
+                    "analysis": {
+                        "time": 0.0,
+                        "space": 0.0048
+                    }
+                },
+                {
+                    "technique": "ProportionalAllocation",
+                    "output": {
+                        "R1": 500.0,
+                        "R2": 400.0,
+                        "R3": 300.0,
+                        "R4": 200.0,
+                        "R5": 100.0
+                    },
+                    "metrics": {
+                        "util": 1,
+                        "loss": 1,
+                        "fairness": 1,
+                        "overall": 1
+                    },
+                    "supplied_ratio": {
+                        "R1": 1.0,
+                        "R2": 1.0,
+                        "R3": 1.0,
+                        "R4": 1.0,
+                        "R5": 1.0
+                    },
+                    "analysis": {
+                        "time": 0.0,
+                        "space": 0.0006
+                    }
+                },
+                {
+                    "technique": "BruteForceAllocation",
+                    "output": {
+                        "R1": 475.0,
+                        "R2": 360.0,
+                        "R3": 255.0,
+                        "R4": 160.0,
+                        "R5": 75.0
+                    },
+                    "metrics": {
+                        "util": 0.66,
+                        "loss": 0.93,
+                        "fairness": 0.85,
+                        "overall": 0.81
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.95,
+                        "R2": 0.9,
+                        "R3": 0.85,
+                        "R4": 0.8,
+                        "R5": 0.75
+                    },
+                    "analysis": {
+                        "time": 1564.1986,
+                        "space": 0.0134
+                    }
+                },
+                {
+                    "technique": "GeneticAlgorithmAllocation",
+                    "output": {
+                        "R1": 619.8698730990748,
+                        "R2": 522.9086776322846,
+                        "R3": 414.09223594096426,
+                        "R4": 294.2749498859727,
+                        "R5": 156.26770911791843
+                    },
+                    "metrics": {
+                        "util": 1.0037067228381074,
+                        "loss": 0.8783399429669995,
+                        "fairness": 1.3922741468048914,
+                        "overall": 1.0763985770732547
+                    },
+                    "supplied_ratio": {
+                        "R1": 1.24,
+                        "R2": 1.31,
+                        "R3": 1.38,
+                        "R4": 1.47,
+                        "R5": 1.56
+                    },
+                    "analysis": {
+                        "time": 3.204,
+                        "space": 0.0304
                     }
                 }
             ]
@@ -36,26 +901,281 @@
             "test_case": "Test Case 10: Zero Demand",
             "techniques": [
                 {
-                    "technique": "GeneticAlgorithmAllocation",
+                    "technique": "FordFulkersonAllocation",
                     "output": {
                         "R1": 0,
-                        "R2": 177.36751941072674,
-                        "R3": 298.38354079945105
+                        "R2": 180,
+                        "R3": 240
                     },
                     "metrics": {
-                        "util": 0.9515021204203556,
-                        "loss": 0.8451730797980742,
-                        "fairness": 0.9407246998592353,
-                        "overall": 0.911053730034221
+                        "util": 0.84,
+                        "loss": 0.84,
+                        "fairness": 0.85,
+                        "overall": 0.84
                     },
                     "supplied_ratio": {
                         "R1": null,
-                        "R2": 0.89,
-                        "R3": 0.99
+                        "R2": 0.9,
+                        "R3": 0.8
                     },
                     "analysis": {
-                        "time": 5.6434,
-                        "space": 0.0263
+                        "time": 0.0,
+                        "space": 0.0024
+                    }
+                },
+                {
+                    "technique": "ProportionalAllocation",
+                    "output": {
+                        "R1": 0.0,
+                        "R2": 169.66,
+                        "R3": 250.34
+                    },
+                    "metrics": {
+                        "util": 1,
+                        "loss": 1,
+                        "fairness": 1,
+                        "overall": 1
+                    },
+                    "supplied_ratio": {
+                        "R1": null,
+                        "R2": 0.85,
+                        "R3": 0.83
+                    },
+                    "analysis": {
+                        "time": 0.0,
+                        "space": 0.0006
+                    }
+                },
+                {
+                    "technique": "BruteForceAllocation",
+                    "output": {
+                        "R1": 0.0,
+                        "R2": 180.0,
+                        "R3": 240.0
+                    },
+                    "metrics": {
+                        "util": 0.84,
+                        "loss": 0.87,
+                        "fairness": 0.57,
+                        "overall": 0.77
+                    },
+                    "supplied_ratio": {
+                        "R1": null,
+                        "R2": 0.9,
+                        "R3": 0.8
+                    },
+                    "analysis": {
+                        "time": 0.008,
+                        "space": 0.0088
+                    }
+                },
+                {
+                    "technique": "GeneticAlgorithmAllocation",
+                    "output": {
+                        "R1": 0,
+                        "R2": 206.87097396187275,
+                        "R3": 350.1870652927663
+                    },
+                    "metrics": {
+                        "util": 1.114116078509278,
+                        "loss": 0.8185509790905189,
+                        "fairness": 1.100822543725959,
+                        "overall": 1.0066802332777165
+                    },
+                    "supplied_ratio": {
+                        "R1": null,
+                        "R2": 1.03,
+                        "R3": 1.17
+                    },
+                    "analysis": {
+                        "time": 3.0799,
+                        "space": 0.0264
+                    }
+                }
+            ]
+        },
+        {
+            "test_case": "Test Case 11: Extreme Shortage",
+            "techniques": [
+                {
+                    "technique": "FordFulkersonAllocation",
+                    "output": {
+                        "R1": 180,
+                        "R2": 16
+                    },
+                    "metrics": {
+                        "util": 0.98,
+                        "loss": 0.88,
+                        "fairness": 0.21,
+                        "overall": 0.71
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.36,
+                        "R2": 0.05
+                    },
+                    "analysis": {
+                        "time": 0.0,
+                        "space": 0.0021
+                    }
+                },
+                {
+                    "technique": "ProportionalAllocation",
+                    "output": {
+                        "R1": 70.88,
+                        "R2": 19.12
+                    },
+                    "metrics": {
+                        "util": 0,
+                        "loss": 1,
+                        "fairness": 0,
+                        "overall": 1
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.14,
+                        "R2": 0.06
+                    },
+                    "analysis": {
+                        "time": 0.0,
+                        "space": 0.0006
+                    }
+                },
+                {
+                    "technique": "BruteForceAllocation",
+                    "output": {
+                        "R1": 180.0,
+                        "R2": 20.0
+                    },
+                    "metrics": {
+                        "util": 1.0,
+                        "loss": 0.89,
+                        "fairness": 0.21,
+                        "overall": 0.73
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.36,
+                        "R2": 0.07
+                    },
+                    "analysis": {
+                        "time": 0.005,
+                        "space": 0.0082
+                    }
+                },
+                {
+                    "technique": "GeneticAlgorithmAllocation",
+                    "output": {
+                        "R1": 145.9111474109068,
+                        "R2": 98.29479200372286
+                    },
+                    "metrics": {
+                        "util": 1.2210296970731482,
+                        "loss": 0.8287496342908237,
+                        "fairness": 0.30973580075044493,
+                        "overall": 0.8103435062025237
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.29,
+                        "R2": 0.33
+                    },
+                    "analysis": {
+                        "time": 3.2886,
+                        "space": 0.027
+                    }
+                }
+            ]
+        },
+        {
+            "test_case": "Test Case 12: Balanced Scenario",
+            "techniques": [
+                {
+                    "technique": "FordFulkersonAllocation",
+                    "output": {
+                        "R1": 380,
+                        "R2": 285,
+                        "R3": 285
+                    },
+                    "metrics": {
+                        "util": 0.95,
+                        "loss": 0.95,
+                        "fairness": 0.95,
+                        "overall": 0.95
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.95,
+                        "R2": 0.95,
+                        "R3": 0.95
+                    },
+                    "analysis": {
+                        "time": 0.0,
+                        "space": 0.003
+                    }
+                },
+                {
+                    "technique": "ProportionalAllocation",
+                    "output": {
+                        "R1": 380.0,
+                        "R2": 285.0,
+                        "R3": 285.0
+                    },
+                    "metrics": {
+                        "util": 1,
+                        "loss": 1,
+                        "fairness": 1,
+                        "overall": 1
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.95,
+                        "R2": 0.95,
+                        "R3": 0.95
+                    },
+                    "analysis": {
+                        "time": 0.0,
+                        "space": 0.0006
+                    }
+                },
+                {
+                    "technique": "BruteForceAllocation",
+                    "output": {
+                        "R1": 380.0,
+                        "R2": 285.0,
+                        "R3": 285.0
+                    },
+                    "metrics": {
+                        "util": 0.95,
+                        "loss": 0.95,
+                        "fairness": 0.95,
+                        "overall": 0.95
+                    },
+                    "supplied_ratio": {
+                        "R1": 0.95,
+                        "R2": 0.95,
+                        "R3": 0.95
+                    },
+                    "analysis": {
+                        "time": 0.86,
+                        "space": 0.011
+                    }
+                },
+                {
+                    "technique": "GeneticAlgorithmAllocation",
+                    "output": {
+                        "R1": 484.4950815230984,
+                        "R2": 365.309933698221,
+                        "R3": 364.88365329502807
+                    },
+                    "metrics": {
+                        "util": 1.2146886685163474,
+                        "loss": 0.9392655665741826,
+                        "fairness": 1.2150721090395253,
+                        "overall": 1.118405614993543
+                    },
+                    "supplied_ratio": {
+                        "R1": 1.21,
+                        "R2": 1.22,
+                        "R3": 1.22
+                    },
+                    "analysis": {
+                        "time": 3.197,
+                        "space": 0.0279
                     }
                 }
             ]
@@ -63,9 +1183,24 @@
     ],
     "averages": [
         {
+            "technique": "FordFulkersonAllocation",
+            "average_time": 0.0,
+            "average_space": 0.0032
+        },
+        {
+            "technique": "ProportionalAllocation",
+            "average_time": 0.0,
+            "average_space": 0.0006
+        },
+        {
+            "technique": "BruteForceAllocation",
+            "average_time": 138.2673,
+            "average_space": 0.0112
+        },
+        {
             "technique": "GeneticAlgorithmAllocation",
-            "average_time": 6.3815,
-            "average_space": 0.0285
+            "average_time": 3.4068,
+            "average_space": 0.0279
         }
     ]
 }
