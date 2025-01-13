@@ -65,14 +65,12 @@ class ProportionalAllocation(AllocationTechnique):
             if (allocations[i] == 0):
                 continue
             allocations[i] = round(allocations[i] - (demands[i] * pipeline_losses[i]), 2)
-
         ### Evaluation metrics:
         total_allocated_water = sum(allocations.values())
         utilization_efficiency = total_allocated_water / water_supply
         
         total_water_losses = sum(allocations[region] * pipeline_losses[region] for region in demands)
         loss_efficiency = 1 - (total_water_losses / water_supply)
-        
         # fairness_index = (1 / len(demands)) * sum(allocations[region] / demands[region] for region in demands)
         
         fairness_index = (1 / len(demands)) * sum(
@@ -81,7 +79,7 @@ class ProportionalAllocation(AllocationTechnique):
         )
         
         overall_efficiency = (weights[0] * utilization_efficiency) + (weights[1] * loss_efficiency) + (weights[2] * fairness_index)
-        
+
         loss_ratio = {}
         for i in (allocations):
             if (allocations[i] == 0):
@@ -91,8 +89,8 @@ class ProportionalAllocation(AllocationTechnique):
             
         return {
                 **allocations,
-                "util": round(utilization_efficiency),
-                "loss": round(loss_efficiency),
-                "fairness": round(fairness_index),
-                "overall": round(overall_efficiency)
+                "util": (utilization_efficiency),
+                "loss": (loss_efficiency),
+                "fairness": (fairness_index),
+                "overall": (overall_efficiency)
                 }
